@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="contracts">
+      <UniqueIdentifier>{7e2a60f6-a7e0-449f-b1d2-0382a91b7967}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="specializations.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="contracts\TestApplication.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestCrashData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestCrashDataBinary.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestCrashDataHeaders.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestCrashDataThread.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestCrashDataThreadFrame.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestDataPoint.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestDevice.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestEnvelope.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestEventData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestExceptionData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestExceptionDetails.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestInternal.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestLocation.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestMessageData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestMetricData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestOperation.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestPageViewData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestRemoteDependencyData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestRequestData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestSession.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestStackFrame.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestUser.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestBase.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestPageViewPerfData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="contracts\TestSessionStateData.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTelemetryClientConfig.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTelemetryContext.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBasicEndToEnd.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel\TestTelemetryChannel.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTelemetryClient.cpp">
+      <Filter>contracts</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

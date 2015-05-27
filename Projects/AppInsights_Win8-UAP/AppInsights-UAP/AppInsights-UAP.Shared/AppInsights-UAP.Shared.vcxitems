@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{c9c8d069-1aaf-40bf-a4b7-b1729049aba4}</ItemsProjectGuid>
+    <ItemsRootNamespace>AppInsights_UAP</ItemsRootNamespace>
+    <ItemsProjectName>AppInsights-UAP.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\BaseTelemetryContext.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\TelemetryChannel.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpHeaderField.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpHeaderFields.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpRequest.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpResponse.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Common.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\JsonWriter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Nullable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Serializer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\StreamWriter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\StringWriter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Utils.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Base.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Contracts.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataBinary.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataHeaders.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataThread.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataThreadFrame.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Data.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\DataPoint.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\DataPointType.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\DependencyKind.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\DependencySourceType.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Device.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Domain.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Envelope.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\EventData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\ExceptionData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\ExceptionDetails.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Internal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Location.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\MessageData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\MetricData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Operation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\PageViewData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\PageViewPerfData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\RemoteDependencyData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\RequestData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Session.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\SessionState.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\SessionStateData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\SeverityLevel.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\StackFrame.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\User.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\TelemetryClient.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\TelemetryClientConfig.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\TelemetryContext.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AppInsights-UAP.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)targetver.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\BaseTelemetryContext.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\TelemetryChannel.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpHeaderField.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpRequest.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\channel\utils\HttpResponse.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\JsonWriter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Serializer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\StreamWriter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\StringWriter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\common\Utils.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Base.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataBinary.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataHeaders.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataThread.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\CrashDataThreadFrame.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Data.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\DataPoint.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Device.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Domain.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Envelope.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\EventData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\ExceptionData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\ExceptionDetails.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Internal.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Location.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\MessageData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\MetricData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Operation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\PageViewData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\PageViewPerfData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\RemoteDependencyData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\RequestData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\Session.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\SessionStateData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\StackFrame.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\contracts\User.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\src\core\TelemetryClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)AppInsights-UAP.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+</Project>
