@@ -44,36 +44,47 @@ TelemetryContext::~TelemetryContext()
 /// </summary>
 void TelemetryContext::InitUser()
 {
-	ApplicationDataContainer^ localSettings = ApplicationData::Current->LocalSettings;
+	try {
+		ApplicationDataContainer^ localSettings = ApplicationData::Current->LocalSettings;
 
-	ApplicationDataContainer^ container =
-		localSettings->CreateContainer("AppInsight", ApplicationDataCreateDisposition::Always);
+		ApplicationDataContainer^ container =
+			localSettings->CreateContainer("AppInsight", ApplicationDataCreateDisposition::Always);
 
-	if (localSettings->Containers->HasKey("AppInsight"))
-	{
-		auto values = localSettings->Containers->Lookup("AppInsight")->Values;
-	
-		//Get/Set the userID
-		if (values->HasKey("userId") == false)
+		if (localSettings->Containers->HasKey("AppInsight"))
 		{
-			Platform::String^ id = ref new Platform::String(Utils::GenerateRandomUUID().c_str());
-			values->Insert("userId", dynamic_cast<PropertyValue^>(PropertyValue::CreateString(id)));
-		}
-		
-		String^ userId = safe_cast<String^>(localSettings->Containers->Lookup("AppInsight")->Values->Lookup("userId"));
-		Nullable<std::wstring> uuid(userId->Data());
-		user.SetId(uuid);
+			auto values = localSettings->Containers->Lookup("AppInsight")->Values;
 
-		//Get/Set the acquisition date
-		if (values->HasKey("acquisitionDate") == false)
-		{
-			Platform::String^ acqDate = ref new Platform::String(Utils::GetCurrentDateTime().c_str());
-			values->Insert("acquisitionDate", dynamic_cast<PropertyValue^>(PropertyValue::CreateString(acqDate)));
+			//Get/Set the userID
+			if (values->HasKey("userId") == false)
+			{
+				Platform::String^ id = ref new Platform::String(Utils::GenerateRandomUUID().c_str());
+				values->Insert("userId", dynamic_cast<PropertyValue^>(PropertyValue::CreateString(id)));
+			}
+
+			String^ userId = safe_cast<String^>(localSettings->Containers->Lookup("AppInsight")->Values->Lookup("userId"));
+			Nullable<std::wstring> uuid(userId->Data());
+			user.SetId(uuid);
+
+			//Get/Set the acquisition date
+			if (values->HasKey("acquisitionDate") == false)
+			{
+				Platform::String^ acqDate = ref new Platform::String(Utils::GetCurrentDateTime().c_str());
+				values->Insert("acquisitionDate", dynamic_cast<PropertyValue^>(PropertyValue::CreateString(acqDate)));
+			}
+
+			String^ acquisitionDate = safe_cast<String^>(localSettings->Containers->Lookup("AppInsight")->Values->Lookup("acquisitionDate"));
+			Nullable<std::wstring> date(acquisitionDate->Data());
+			user.SetAccountAcquisitionDate(date);
 		}
-		
-		String^ acquisitionDate = safe_cast<String^>(localSettings->Containers->Lookup("AppInsight")->Values->Lookup("acquisitionDate"));
-		Nullable<std::wstring> date(acquisitionDate->Data());
-		user.SetAccountAcquisitionDate(date);
+	}
+	catch (Exception^) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
+	}
+	catch (std::exception &) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
+	}
+	catch (...) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
 	}
 }
 
@@ -82,36 +93,50 @@ void TelemetryContext::InitUser()
 /// </summary>
 void TelemetryContext::InitDevice()
 {
-	Nullable<std::wstring> strId(Utils::GenerateRandomUUID().c_str());
-	device.SetId(strId);
+	try {
+		Nullable<std::wstring> strId(Utils::GenerateRandomUUID().c_str());
+		device.SetId(strId);
 
-	String^ lang = Language::CurrentInputMethodLanguageTag;
-	Nullable<std::wstring> strLang(lang->Data());
-	device.SetLanguage(strLang);
+		String^ lang = Language::CurrentInputMethodLanguageTag;
+		Nullable<std::wstring> strLang(lang->Data());
+		device.SetLanguage(strLang);
 
-	GeographicRegion geographicRegion;
-	String^ region = geographicRegion.DisplayName;
-	Nullable<std::wstring> strRegion(region->Data());
-	device.SetLocale(strRegion);
+		GeographicRegion geographicRegion;
+		String^ region = geographicRegion.DisplayName;
+		Nullable<std::wstring> strRegion(region->Data());
+		device.SetLocale(strRegion);
 
-	ConnectionProfile^ connectionProfile = NetworkInformation::GetInternetConnectionProfile();
-	String^ network = connectionProfile->ProfileName;
-	Nullable<std::wstring> strNetwork(network->Data());
-	device.SetNetwork(strNetwork);
+		ConnectionProfile^ connectionProfile = NetworkInformation::GetInternetConnectionProfile();
+		if (connectionProfile != nullptr)
+		{
+			String^ network = connectionProfile->ProfileName;
+			Nullable<std::wstring> strNetwork(network->Data());
+			device.SetNetwork(strNetwork);
+		}
 
-	Nullable<std::wstring> strOs(L"Windows");
-	device.SetOs(strOs);
-	//
-	//DisplayInformation^ displayInformation = DisplayInformation::GetForCurrentView();
-	//float x = displayInformation->RawDpiX;
-	//float y = displayInformation->RawDpiY;
-	//wchar_t strResolution[256];
-	//swprintf_s(strResolution, 256, L"%fx%f", x, y);
-	//Nullable<std::wstring> strRes(strResolution);
-	//device.SetScreenResolution(strRes);
+		Nullable<std::wstring> strOs(L"Windows");
+		device.SetOs(strOs);
+		//
+		//DisplayInformation^ displayInformation = DisplayInformation::GetForCurrentView();
+		//float x = displayInformation->RawDpiX;
+		//float y = displayInformation->RawDpiY;
+		//wchar_t strResolution[256];
+		//swprintf_s(strResolution, 256, L"%fx%f", x, y);
+		//Nullable<std::wstring> strRes(strResolution);
+		//device.SetScreenResolution(strRes);
 
-	Nullable<std::wstring> strType(L"Store");
-	device.SetType(strType);
+		Nullable<std::wstring> strType(L"Store");
+		device.SetType(strType);
+	}
+	catch (Exception^) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get device context");
+	}
+	catch (std::exception &) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get device context");
+	}
+	catch (...) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get device context");
+	}
 }
 
 /// <summary>
@@ -119,14 +144,25 @@ void TelemetryContext::InitDevice()
 /// </summary>
 void TelemetryContext::InitApplication()
 {
-	PackageId^ appId = Package::Current->Id;
-	PackageVersion version = appId->Version;
-	wchar_t strVerNumber[256];
-	swprintf_s(strVerNumber, 256, L"%d.%d.%d.%d", version.Build, version.Major, version.Minor, version.Revision);
-	String^ ver = appId->Name + " (" + ref new String(strVerNumber) + ")";
-	Nullable<std::wstring> strVer(ver->Data());
+	try {
+		PackageId^ appId = Package::Current->Id;
+		PackageVersion version = appId->Version;
+		wchar_t strVerNumber[256];
+		swprintf_s(strVerNumber, 256, L"%d.%d.%d.%d", version.Build, version.Major, version.Minor, version.Revision);
+		String^ ver = appId->Name + " (" + ref new String(strVerNumber) + ")";
+		Nullable<std::wstring> strVer(ver->Data());
 
-	app.SetVer(strVer);
+		app.SetVer(strVer);
+	}
+	catch (Exception^) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
+	}
+	catch (std::exception &) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
+	}
+	catch (...) {
+		Utils::WriteDebugLine(L"WARNING: Failed to get application context");
+	}
 }
 
 /// <summary>
