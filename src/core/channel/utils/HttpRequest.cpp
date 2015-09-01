@@ -143,56 +143,64 @@ class HttpRequestImpl : public HttpRequestImplBase
 		/// </summary>
 		/// <param name="req">The req.</param>
 		/// <param name="completionCallback">The completion callback.</param>
-		/// <returns>0 for success, negative for failure</returns>
+		/// <returns>0 always</returns>
 		virtual int Send(const HttpRequest &req, const std::function<void(const HttpResponse &resp)> &completionCallback)
-        {
-            try {
-				String^ suri = ref new String((L"https://" + req.GetHostname() + req.GetRequestUri()).c_str());
-                Uri^ uri = ref new Uri(suri);
-                HttpClient^ httpClient = ref new HttpClient();
-                String^ payload = ref new String(std::wstring(req.GetPayload()).c_str());
-                String^ contentType = ref new String(L"application/json");
-                HttpStringContent^ httpContent = ref new HttpStringContent(payload, UnicodeEncoding::Utf8, contentType);
+		{
+			String^ suri = ref new String((L"https://" + req.GetHostname() + req.GetRequestUri()).c_str());
+			Uri^ uri = ref new Uri(suri);
+			HttpClient^ httpClient = ref new HttpClient();
+			String^ payload = ref new String(std::wstring(req.GetPayload()).c_str());
+			String^ contentType = ref new String(L"application/json");
+			HttpStringContent^ httpContent = ref new HttpStringContent(payload, UnicodeEncoding::Utf8, contentType);
 
-				create_task(httpClient->PostAsync(uri, httpContent)).then([this, completionCallback](HttpResponseMessage^ response) {
+			auto result = create_task(httpClient->PostAsync(uri, httpContent)
+				).then([this, completionCallback](HttpResponseMessage^ response) {
+				int code = static_cast<int>(response->StatusCode);
+
+				create_task(response->Content->ReadAsStringAsync()).then([this, code, completionCallback](String ^content) {
+					std::wstring rpayload(content->Data(), content->Length());
+					std::string srpayload(std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(rpayload));
+					HttpResponse resp;
+
+					resp.SetErrorCode(code);
+					resp.SetPayload(srpayload);
+					completionCallback(resp);
+				}).then([completionCallback](concurrency::task<void> t) {
 					try {
-						int code = static_cast<int>(response->StatusCode);
-
-						create_task(response->Content->ReadAsStringAsync()).then([this, code, completionCallback](String ^content) {
-							std::wstring rpayload(content->Data(), content->Length());
-							std::string srpayload(std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(rpayload));
-							HttpResponse resp;
-
-							resp.SetErrorCode(code);
-							resp.SetPayload(srpayload);
-							completionCallback(resp);
-						});
+						t.get();
 					}
 					catch (Exception^) {
-						Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+						Utils::WriteDebugLine(L"ERROR: Exception thrown while receiving");
 						completionCallback(HttpResponse());
 					}
 					catch (std::exception &) {
-						Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+						Utils::WriteDebugLine(L"ERROR: Exception thrown while receiving");
 						completionCallback(HttpResponse());
 					}
 					catch (...) {
-						Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+						Utils::WriteDebugLine(L"ERROR: Exception thrown while receiving");
 						completionCallback(HttpResponse());
 					}
-                });
-			} catch (Exception^) {
-				Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
-				return -1;
-			} catch (std::exception &) {
-				Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
-				return -3;
-			} catch (...) {
-				Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
-				return -2;
-			}
-            return 0;
-        }
+				});
+			}).then([completionCallback](concurrency::task<void> t) {
+				try {
+					t.get();
+				}
+				catch (Exception^) {
+					Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+					completionCallback(HttpResponse());
+				}
+				catch (std::exception &) {
+					Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+					completionCallback(HttpResponse());
+				}
+				catch (...) {
+					Utils::WriteDebugLine(L"ERROR: Exception thrown while sending");
+					completionCallback(HttpResponse());
+				}
+			});
+			return 0;
+		}
 };
 #endif
 #else // Everything else - OS X, Linux, Droid; use Curl

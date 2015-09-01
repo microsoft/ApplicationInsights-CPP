@@ -152,6 +152,8 @@ void TelemetryChannel::Send()
 		}
 		buffer += L"]";
 
+		m_buffer.clear();
+
 #ifdef CPP_LIB_DEBUG
 		std::wstring req = L"REQUEST :\r\n" + buffer;
 		Utils::WriteDebugLine(req);
@@ -161,7 +163,7 @@ void TelemetryChannel::Send()
 
 		HttpRequest request(HTTP_REQUEST_METHOD::POST, L"dc.services.visualstudio.com", L"/v2/track", buffer);
 		request.GetHeaderFields().SetField(L"Content-Type", L"application/json");
-		if (request.Send([this, in_progress_buffer](const HttpResponse &response) {
+		request.Send([this, in_progress_buffer](const HttpResponse &response) {
 #ifdef CPP_LIB_DEBUG
 			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wstrResp = converter.from_bytes(response.GetPayload());
@@ -184,9 +186,6 @@ void TelemetryChannel::Send()
 #endif
 #endif
 #endif
-		}) == 0) {
-			// Sent successfully
-			m_buffer.clear();
-		}
+		});
 	}
 }
