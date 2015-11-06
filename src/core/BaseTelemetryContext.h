@@ -17,7 +17,7 @@ namespace ApplicationInsights
 			/// Initializes a new instance of the <see cref="BaseTelemetryContext"/> class.
 			/// </summary>
 			/// <param name="iKey">The i key.</param>
-			BaseTelemetryContext(std::wstring& iKey);
+			BaseTelemetryContext(const std::wstring& iKey);
 
 			/// <summary>
 			/// Finalizes an instance of the <see cref="BaseTelemetryContext"/> class.

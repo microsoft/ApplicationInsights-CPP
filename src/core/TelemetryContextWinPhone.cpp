@@ -10,7 +10,7 @@ using namespace ApplicationInsights::core;
 /// </summary>
 /// <param name="iKey">The iKey.</param>
 /// <returns></returns>
-TelemetryContext::TelemetryContext(std::wstring& iKey) :
+TelemetryContext::TelemetryContext(const std::wstring& iKey) :
 BaseTelemetryContext(iKey)
 {
 }

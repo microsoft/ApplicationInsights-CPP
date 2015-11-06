@@ -19,7 +19,7 @@ namespace ApplicationInsights
 			/// </summary>
 			/// <param name="iKey">The iKey.</param>
 			/// <returns></returns>
-			TelemetryContext(std::wstring& iKey);
+			TelemetryContext(const std::wstring& iKey);
 
 			/// <summary>
 			/// Finalizes an instance of the <see cref=""/> class.

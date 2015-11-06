@@ -9,7 +9,7 @@ using namespace ApplicationInsights::core;
 /// Initializes a new instance of the <see cref="BaseTelemetryContext"/> class.
 /// </summary>
 /// <param name="iKey">The i key.</param>
-BaseTelemetryContext::BaseTelemetryContext(std::wstring& iKey)
+BaseTelemetryContext::BaseTelemetryContext(const std::wstring& iKey)
 {
 	m_iKey = iKey;
 }
