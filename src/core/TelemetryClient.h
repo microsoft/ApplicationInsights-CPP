@@ -32,13 +32,13 @@ namespace ApplicationInsights
 			/// Gets the context.
 			/// </summary>
 			/// <returns>the context</returns>
-			TelemetryContext *GetContext() const { return m_context; }
+			TelemetryContext *GetContext() const { return m_context.get(); }
 
 			/// <summary>
 			/// Gets the configuration.
 			/// </summary>
 			/// <returns>the config</returns>
-			TelemetryClientConfig *GetConfig() const { return m_config; }
+			TelemetryClientConfig *GetConfig() const { return m_config.get(); }
 
 			/// <summary>
 			/// Tracks the event.
@@ -156,14 +156,13 @@ namespace ApplicationInsights
 #endif
 
 			// The config for the instance
-			//std::unique_ptr<TelemetryClientConfig> m_config;
-			TelemetryClientConfig *m_config;
+			std::unique_ptr<TelemetryClientConfig> m_config;
 
 			// The telemetry telemetryContext object.
-			TelemetryContext *m_context;
+			std::unique_ptr<TelemetryContext> m_context;
 
 			// The telemetry channel for this client.
-			TelemetryChannel *m_channel;
+			std::unique_ptr<TelemetryChannel> m_channel;
 		};
 	}
 }

@@ -26,34 +26,6 @@ namespace ApplicationInsights
 			static std::wstring GenerateRandomUUID();
 
 			/// <summary>
-			/// Safely deletes a ptr.
-			/// </summary>
-			/// <param name="ptr">The PTR.</param>
-			template <class T>
-			static void SafeDelete(T& ptr)
-			{
-				if (ptr != nullptr)
-				{
-					delete ptr;
-					ptr = nullptr;
-				}
-			}
-
-			/// <summary>
-			/// Safely deletes an array.
-			/// </summary>
-			/// <param name="ptr">The PTR.</param>
-			template <class T>
-			static void SafeDeleteArray(T& ptr)
-			{
-				if (ptr != nullptr)
-				{
-					delete[] ptr;
-					ptr = nullptr;
-				}
-			}
-
-			/// <summary>
 			/// Writes the debug line.
 			/// </summary>
 			/// <param name="output">The output.</param>

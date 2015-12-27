@@ -40,7 +40,7 @@ namespace core {
 				{
 				}
 
-				MockTelemetryChannel *GetChannel() const { return (MockTelemetryChannel*)m_channel; }
+				MockTelemetryChannel *GetChannel() const { return (MockTelemetryChannel*)m_channel.get(); }
 
 			};
 
@@ -61,7 +61,7 @@ namespace core {
 				{
 					std::wstring eventName = L"MY TRACK EVENT";
 					std::wstring iKey = L"MY_IKEY";
-					MockTelemetryClient tc = MockTelemetryClient(iKey);
+					MockTelemetryClient tc(iKey);
 					tc.Flush();
 					tc.TrackEvent(eventName);
 
@@ -74,7 +74,7 @@ namespace core {
 				{
 					std::wstring eventName = L"MY TRACK EVENT";
 					std::wstring iKey = L"MY_IKEY";
-					MockTelemetryClient tc = MockTelemetryClient(iKey);
+					MockTelemetryClient tc(iKey);
 					tc.Flush();
 					tc.DisableTracking();
 
@@ -88,7 +88,7 @@ namespace core {
 				{
 					std::wstring eventName = L"MY TRACK EVENT";
 					std::wstring iKey = L"MY_IKEY";
-					MockTelemetryClient tc = MockTelemetryClient(iKey);
+					MockTelemetryClient tc(iKey);
 					tc.Flush();
 					tc.DisableTracking();
 					tc.TrackEvent(eventName);

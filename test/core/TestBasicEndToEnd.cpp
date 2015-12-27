@@ -94,13 +94,13 @@ namespace core {
 #ifdef WINAPI_FAMILY_PARTITION
 #if !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) // phone or store
 				DWORD WaitForResponse() {
-					DWORD ret = ((MockTelemetryChannel *)m_channel)->WaitForResponse();
+					DWORD ret = ((MockTelemetryChannel *)m_channel.get())->WaitForResponse();
 					return ret;
 				}
 #endif 
 #endif
 				HttpResponse GetResponse() {
-					return ((MockTelemetryChannel *)m_channel)->GetResponse();
+					return ((MockTelemetryChannel *)m_channel.get())->GetResponse();
 				}
 
 			};
@@ -137,7 +137,7 @@ namespace core {
 				TEST_METHOD(BasicEndToEnd)
 				{
 					std::wstring iKey = L"ba0f19ca-aa77-4838-ac05-dbba85d6b677";
-					MockTelemetryClient tc = MockTelemetryClient(iKey);
+					MockTelemetryClient tc(iKey);
 
 #ifdef WINAPI_FAMILY_PARTITION
 #if !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) // phone or store					

@@ -22,10 +22,10 @@ using namespace ApplicationInsights::core;
 /// <param name="iKey">The ikey.</param>
 TelemetryClient::TelemetryClient(std::wstring& iKey)
 {
-	m_config = new TelemetryClientConfig(iKey);
-	m_context = new TelemetryContext(iKey);
+	m_config  = std::make_unique<TelemetryClientConfig>(iKey);
+	m_context = std::make_unique<TelemetryContext>(iKey);
 	m_context->InitContext();
-	m_channel = new TelemetryChannel(*m_config);
+	m_channel = std::make_unique<TelemetryChannel>(*m_config);
 }
 
 /// <summary>
@@ -45,11 +45,6 @@ TelemetryClient::~TelemetryClient()
 {
 	// Flush any pending data
 	Flush();
-
-	// Free allocated memory
-	Utils::SafeDelete(m_channel);
-	Utils::SafeDelete(m_context);
-	Utils::SafeDelete(m_config);
 }
 
 /// <summary>
