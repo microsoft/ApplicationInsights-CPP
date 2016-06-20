@@ -1,0 +1,80 @@
+configurations
+{
+	Toolset
+	{
+		key : "PlatformToolset";
+		choices : { v140, v120, v110 };
+	};
+};
+
+nuget
+{
+	nuspec
+	{
+		id : AppInsights_Win32;
+		version : 1.0.0-beta-1;
+		title : Microsoft Application Insights Library for C++;
+		authors: { Microsoft };
+		owners: { Microsoft };
+		licenseUrl: "https://github.com/Microsoft/ApplicationInsights-CPP/blob/master/LICENSE";
+		iconUrl: "http://appanacdn.blob.core.windows.net/cdn/icons/aic.png";
+		requireLicenseAcceptance:false;
+		summary: Microsoft Application Insights Library for C++;
+		description: @"Application Insights for C++ applications.
+		See http://go.microsoft.com/fwlink/?LinkID=510752 for more information.
+		Project on Githib: https://github.com/Microsoft/ApplicationInsights-CPP
+		Fork on Github: https://github.com/keiichi-morisato/ApplicationInsights-CPP";
+		releaseNotes: "This package includes both the release and the debug versions of the library to allow for debugging. The PDB files are also included.";
+		projectUrl: "https://azure.microsoft.com/en-us/documentation/articles/app-insights-get-started/";
+		copyright: Copyright (c) Microsoft. All rights reserved;
+		tags: { Analytics, ApplicationInsights, Telemetry, AppInsights, native };
+	};
+ 
+	dependencies
+	{
+		packages:
+		{
+		};
+	};
+
+	files
+	{
+		include:
+		{
+			..\..\..\src\core\*.h;
+			..\..\..\src\core\channel\*.h;
+			..\..\..\src\core\channel\utils\*.h;
+			..\..\..\src\core\common\*.h;
+			..\..\..\src\core\contracts\*.h;
+		};
+ 
+		[x64,v140,v120,release,static]
+		{
+			lib:
+			{
+				..\x64\Release\core.lib;
+			}
+			symbols:
+			{
+			}
+			bin:
+			{
+			}
+		};
+
+		[x64,v140,v120,debug,static]
+		{
+			lib:
+			{
+				..\x64\Debug\core.lib;
+			}
+			symbols:
+			{
+				..\x64\Debug\core.pdb;
+			}
+			bin:
+			{
+			}
+		};
+	};
+}

@@ -11,6 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B9DFD4EA-B8B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{288A8E49-E064-439B-8682-DB010CBDF609}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{D08D10AB-DE85-4A6E-8EF7-F61AD2C98387}"
+	ProjectSection(SolutionItems) = preProject
+		package\AppInsights_Win32.autopkg = package\AppInsights_Win32.autopkg
+		package\build.bat = package\build.bat
+		package\package.ps1 = package\package.ps1
+		package\README.md = package\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
