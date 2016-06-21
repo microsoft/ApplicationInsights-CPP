@@ -82,3 +82,4 @@ lib/
 ssl/
 .deps/
 *.opendb
+*.db

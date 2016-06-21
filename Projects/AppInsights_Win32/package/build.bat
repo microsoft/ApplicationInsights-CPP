@@ -1,0 +1,13 @@
+@echo off
+@echo ..............................................................................
+@echo Restoring the nuget packages..
+nuget restore ..\application_insights.sln
+@echo ..............................................................................
+@echo Building the debug version..
+msbuild /t:Rebuild /p:Configuration=Debug ../application_insights.sln /m
+@echo ..............................................................................
+@echo Building the releaseversion..
+msbuild /t:Rebuild /p:Configuration=Release ../application_insights.sln /m
+@echo ..............................................................................
+@echo Packaging..
+rem powershell -File .\package.ps1
