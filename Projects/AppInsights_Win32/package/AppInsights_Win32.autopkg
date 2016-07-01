@@ -7,12 +7,13 @@ configurations
 	};
 };
 
+
 nuget
 {
 	nuspec
 	{
 		id : AppInsights_Win32;
-		version : 1.0.0-beta-1;
+		version : 1.0.0-beta-2;
 		title : Microsoft Application Insights Library for C++;
 		authors: { Microsoft };
 		owners: { Microsoft };
@@ -39,16 +40,14 @@ nuget
 
 	files
 	{
+		// The expression preserves and recreates the subdirectories instead of flattening them.
 		include:
 		{
-			..\..\..\src\core\*.h;
-			..\..\..\src\core\channel\*.h;
-			..\..\..\src\core\channel\utils\*.h;
-			..\..\..\src\core\common\*.h;
-			..\..\..\src\core\contracts\*.h;
+			#flatten = false;
+			"..\..\..\src\**\*.h";
 		};
- 
-		[x64,v140,v120,release,static]
+
+		[x64,v140,release,static]
 		{
 			lib:
 			{
@@ -62,7 +61,8 @@ nuget
 			}
 		};
 
-		[x64,v140,v120,debug,static]
+		// Debug Versions
+		[x64,v140,debug,static]
 		{
 			lib:
 			{
