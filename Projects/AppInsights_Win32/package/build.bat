@@ -10,4 +10,4 @@ msbuild /t:Rebuild /p:Configuration=Debug ../application_insights.sln /m
 msbuild /t:Rebuild /p:Configuration=Release ../application_insights.sln /m
 @echo ..............................................................................
 @echo Packaging..
-rem powershell -File .\package.ps1
+powershell -File .\package.ps1
