@@ -3,17 +3,16 @@ configurations
 	Toolset
 	{
 		key : "PlatformToolset";
-		choices : { v140, v120, v110 };
+		choices : { v140 };
 	};
 };
-
 
 nuget
 {
 	nuspec
 	{
 		id : AppInsights_Win32;
-		version : 1.0.0-beta-2;
+		version : 1.0.0-beta-09;
 		title : Microsoft Application Insights Library for C++;
 		authors: { Microsoft };
 		owners: { Microsoft };
@@ -47,7 +46,7 @@ nuget
 			"..\..\..\src\**\*.h";
 		};
 
-		[x64,v140,release,static]
+		[x64,v140,Release]
 		{
 			lib:
 			{
@@ -58,11 +57,12 @@ nuget
 			}
 			bin:
 			{
+				..\x64\Release\core.dll;
 			}
 		};
 
 		// Debug Versions
-		[x64,v140,debug,static]
+		[x64,v140,Debug]
 		{
 			lib:
 			{
@@ -74,6 +74,7 @@ nuget
 			}
 			bin:
 			{
+				..\x64\Debug\core.dll;
 			}
 		};
 	};
