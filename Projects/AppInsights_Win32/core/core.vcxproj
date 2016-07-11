@@ -112,12 +112,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>CURL_STATICLIB;CPP_LIB_DEBUG=1;WIN64;_DEBUG;_WINDOWS;_USRDLL;TELEMETRY_CLIENT_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,7 +165,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>CURL_STATICLIB;NDEBUG;WIN64;_WINDOWS;_USRDLL;TELEMETRY_CLIENT_DLL_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeaderFile />
