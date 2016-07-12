@@ -42,7 +42,6 @@ nuget
 		// The expression preserves and recreates the subdirectories instead of flattening them.
 		include:
 		{
-			#flatten = false;
 			"..\..\..\src\**\*.h";
 		};
 
