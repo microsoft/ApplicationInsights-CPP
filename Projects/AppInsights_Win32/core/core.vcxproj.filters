@@ -117,6 +117,7 @@
     <ClCompile Include="..\..\..\src\core\TelemetryContextWin32.cpp" />
     <ClCompile Include="..\..\..\src\core\TelemetryContextWinPhone.cpp" />
     <ClCompile Include="..\..\..\src\core\TelemetryContextWinStore.cpp" />
+    <ClCompile Include="appinsights_dll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\core\channel\utils\HttpHeaderField.h">

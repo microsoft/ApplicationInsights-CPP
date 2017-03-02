@@ -15,13 +15,17 @@ class HttpRequestImplBase {
         virtual int Send(const HttpRequest &req, const std::function<void(const HttpResponse &resp)> &completionCallback) = 0;
 };
 
-#ifdef WIN32
+#if defined(WIN32) || defined(WIN64)
 #include <windows.h>
 #endif
 
 #if defined(WINAPI_FAMILY_PARTITION) // it's SOME kind of Windows
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) // Win32, no store, no phone
 #include <winhttp.h>
+
+// Complimentary to the winhttp.h include--We must pull in the winhttp.lib to get our project to output a DLL
+#pragma comment( lib, "winhttp.lib");
+
 class HttpRequestImpl : public HttpRequestImplBase
 {
     private:

@@ -39,7 +39,7 @@ void StreamWriter::Write(bool value)
 void StreamWriter::Write(int value)
 {
 	wchar_t buffer[128];
-#if WIN32
+#if defined(WIN32) || defined(WIN64)
 	swprintf_s(buffer, 128, L"%d", value);
 #else
     swprintf(buffer, 128, L"%d", value);
@@ -54,7 +54,7 @@ void StreamWriter::Write(int value)
 void StreamWriter::Write(float value)
 {
 	wchar_t buffer[128];
-#if WIN32
+#if defined(WIN32) || defined(WIN64)
 	swprintf_s(buffer, 128, L"%f", value);
 #else
     swprintf(buffer, 128, L"%f", value);
@@ -69,7 +69,7 @@ void StreamWriter::Write(float value)
 void StreamWriter::Write(double value)
 {
 	wchar_t buffer[128];
-#if WIN32
+#if defined(WIN32) || defined(WIN64)
 	swprintf_s(buffer, 128, L"%ld", value);
 #else
     swprintf(buffer, 128, L"%ld", value);

@@ -3,7 +3,7 @@ configurations
 	Toolset
 	{
 		key : "PlatformToolset";
-		choices : { v141, v140, v120, v110 };
+		choices : { v140 };
 	};
 };
 
@@ -39,16 +39,13 @@ nuget
 
 	files
 	{
+		// The expression preserves and recreates the subdirectories instead of flattening them.
 		include:
 		{
-			..\..\..\src\core\*.h;
-			..\..\..\src\core\channel\*.h;
-			..\..\..\src\core\channel\utils\*.h;
-			..\..\..\src\core\common\*.h;
-			..\..\..\src\core\contracts\*.h;
+			"..\..\..\src\**\*.h";
 		};
- 
-		[x64,v141,release,static]
+
+		[x64,v140,Release]
 		{
 			lib:
 			{
@@ -59,23 +56,12 @@ nuget
 			}
 			bin:
 			{
-			}
-		};
-		[x64,v140,v120,release,static]
-		{
-			lib:
-			{
-				..\x64\Release\core.lib;
-			}
-			symbols:
-			{
-			}
-			bin:
-			{
+				..\x64\Release\core.dll;
 			}
 		};
 
-		[x64,v140,v120,debug,static]
+		// Debug Versions
+		[x64,v140,Debug]
 		{
 			lib:
 			{
@@ -87,6 +73,7 @@ nuget
 			}
 			bin:
 			{
+				..\x64\Debug\core.dll;
 			}
 		};
 		[x64,v141,debug,static]
