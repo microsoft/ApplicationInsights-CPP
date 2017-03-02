@@ -3,7 +3,7 @@ configurations
 	Toolset
 	{
 		key : "PlatformToolset";
-		choices : { v140, v120, v110 };
+		choices : { v141, v140, v120, v110 };
 	};
 };
 
@@ -12,7 +12,7 @@ nuget
 	nuspec
 	{
 		id : AppInsights_Win32;
-		version : 1.0.0-beta-1;
+		version : 1.0.0-beta-2;
 		title : Microsoft Application Insights Library for C++;
 		authors: { Microsoft };
 		owners: { Microsoft };
@@ -27,7 +27,7 @@ nuget
 		releaseNotes: "This package includes both the release and the debug versions of the library to allow for debugging. The PDB files are also included.";
 		projectUrl: "https://azure.microsoft.com/en-us/documentation/articles/app-insights-get-started/";
 		copyright: Copyright (c) Microsoft. All rights reserved;
-		tags: { Analytics, ApplicationInsights, Telemetry, AppInsights, native };
+		tags: { Analytics, ApplicationInsights, Telemetry, AppInsights, native, cpp };
 	};
  
 	dependencies
@@ -48,6 +48,19 @@ nuget
 			..\..\..\src\core\contracts\*.h;
 		};
  
+		[x64,v141,release,static]
+		{
+			lib:
+			{
+				..\x64\Release\core.lib;
+			}
+			symbols:
+			{
+			}
+			bin:
+			{
+			}
+		};
 		[x64,v140,v120,release,static]
 		{
 			lib:
@@ -63,6 +76,20 @@ nuget
 		};
 
 		[x64,v140,v120,debug,static]
+		{
+			lib:
+			{
+				..\x64\Debug\core.lib;
+			}
+			symbols:
+			{
+				..\x64\Debug\core.pdb;
+			}
+			bin:
+			{
+			}
+		};
+		[x64,v141,debug,static]
 		{
 			lib:
 			{
