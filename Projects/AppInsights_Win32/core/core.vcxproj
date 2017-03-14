@@ -119,10 +119,13 @@
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
       <BrowseInformation>true</BrowseInformation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapExports>true</MapExports>
     </Link>
     <Lib>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
@@ -170,6 +173,9 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

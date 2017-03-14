@@ -12,7 +12,7 @@ nuget
 	nuspec
 	{
 		id : AppInsights_Win32;
-		version : 1.0.0-beta-20;
+		version : 1.0.0-beta-23;
 		title : Microsoft Application Insights Library for C++;
 		authors: { Microsoft };
 		owners: { Microsoft };
@@ -65,11 +65,33 @@ nuget
 				..\x64\Release\core.pdb;
 			}
 			bin: {
+				..\x64\Release\core.dll;
+			}
+		};
+		[x64,v141,Release,static]
+		{
+			lib: {
+				..\x64\Release\core.lib;
+			}
+			symbols: {
+				..\x64\Release\core.pdb;
 			}
 		};
 
 		// Debug Versions
 		[x64,v140,Debug]
+		{
+			lib: {
+				..\x64\Debug\core.lib;
+			}
+			symbols: {
+				..\x64\Debug\core.pdb;
+			}
+			bin: {
+				..\x64\Debug\core.dll;
+			}
+		};
+		[x64,v141,Debug]
 		{
 			lib: {
 				..\x64\Debug\core.lib;
