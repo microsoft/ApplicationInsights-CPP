@@ -102,31 +102,35 @@ RESULT BaseTelemetryContext::GetContextTags(wstring_wstring_map& tags)
 {
 	tags.clear();
 
-    AddToMapIfHasValue(tags, L"ai.user.accountAcquisitionDate", user.GetAccountAcquisitionDate());
-    AddToMapIfHasValue(tags, L"ai.user.accountId", user.GetAccountId());
-    AddToMapIfHasValue(tags, L"ai.user.userAgent", user.GetUserAgent());
-    AddToMapIfHasValue(tags, L"ai.user.id", user.GetId());
+	AddToMapIfHasValue(tags, L"ai.user.accountAcquisitionDate", user.GetAccountAcquisitionDate());
+	AddToMapIfHasValue(tags, L"ai.user.accountId", user.GetAccountId());
+	AddToMapIfHasValue(tags, L"ai.user.userAgent", user.GetUserAgent());
+	AddToMapIfHasValue(tags, L"ai.user.id", user.GetId());
 
-    AddToMapIfHasValue(tags, L"ai.device.id", device.GetId());
-    AddToMapIfHasValue(tags, L"ai.device.ip", device.GetIp());
-    AddToMapIfHasValue(tags, L"ai.device.language", device.GetLanguage());
-    AddToMapIfHasValue(tags, L"ai.device.locale", device.GetLocale());
-    AddToMapIfHasValue(tags, L"ai.device.model", device.GetModel());
-    AddToMapIfHasValue(tags, L"ai.device.network", device.GetNetwork());
-    AddToMapIfHasValue(tags, L"ai.device.oemName", device.GetOemName());
-    AddToMapIfHasValue(tags, L"ai.device.os", device.GetOs());
-    AddToMapIfHasValue(tags, L"ai.device.osVersion", device.GetOsVersion());
-    AddToMapIfHasValue(tags, L"ai.device.roleInstance", device.GetRoleInstance());
-    AddToMapIfHasValue(tags, L"ai.device.roleName", device.GetRoleName());
-    AddToMapIfHasValue(tags, L"ai.device.screenResolution", device.GetScreenResolution());
-    AddToMapIfHasValue(tags, L"ai.device.type", device.GetType());
-    AddToMapIfHasValue(tags, L"ai.device.machineName", device.GetMachineName());
+	AddToMapIfHasValue(tags, L"ai.device.id", device.GetId());
+	AddToMapIfHasValue(tags, L"ai.device.ip", device.GetIp());
+	AddToMapIfHasValue(tags, L"ai.device.language", device.GetLanguage());
+	AddToMapIfHasValue(tags, L"ai.device.locale", device.GetLocale());
+	AddToMapIfHasValue(tags, L"ai.device.model", device.GetModel());
+	AddToMapIfHasValue(tags, L"ai.device.network", device.GetNetwork());
+	AddToMapIfHasValue(tags, L"ai.device.oemName", device.GetOemName());
+	AddToMapIfHasValue(tags, L"ai.device.os", device.GetOs());
+	AddToMapIfHasValue(tags, L"ai.device.osVersion", device.GetOsVersion());
+	AddToMapIfHasValue(tags, L"ai.device.roleInstance", device.GetRoleInstance());
+	AddToMapIfHasValue(tags, L"ai.device.roleName", device.GetRoleName());
+	AddToMapIfHasValue(tags, L"ai.device.screenResolution", device.GetScreenResolution());
+	AddToMapIfHasValue(tags, L"ai.device.type", device.GetType());
+	AddToMapIfHasValue(tags, L"ai.device.machineName", device.GetMachineName());
 
-    AddToMapIfHasValue(tags, L"ai.application.ver", app.GetVer());
+	AddToMapIfHasValue(tags, L"ai.application.ver", app.GetVer());
 
-    AddToMapIfHasValue(tags, L"ai.session.id", session.GetId());
-    AddToMapIfHasValue(tags, L"ai.session.isFirst", session.GetIsFirst());
-    AddToMapIfHasValue(tags, L"ai.session.isNew", session.GetIsNew());
+	AddToMapIfHasValue(tags, L"ai.session.id", session.GetId());
+
+	AddToMapIfHasValue(tags, L"ai.operation.id", session.GetId());
+	AddToMapIfHasValue(tags, L"ai.operation.parentId", session.GetParentId());
+
+	AddToMapIfHasValue(tags, L"ai.session.isFirst", session.GetIsFirst());
+	AddToMapIfHasValue(tags, L"ai.session.isNew", session.GetIsNew());
 
 	return RESULT_OK;
 }
