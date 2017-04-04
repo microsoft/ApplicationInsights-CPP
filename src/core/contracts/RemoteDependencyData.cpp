@@ -36,6 +36,12 @@ void RemoteDependencyData::Serialize(Serializer& serializer) const
     serializer.WritePropertyName(L"value");
     serializer.WriteDoubleValue(m_value);
     
+    if (m_id.HasValue())
+    {
+        serializer.WritePropertyName(L"ai.operation.id");
+        serializer.WriteStringValue(m_id.GetValue());
+    }
+
     if (m_count.HasValue())
     {
         serializer.WritePropertyName(L"count");
@@ -88,6 +94,12 @@ void RemoteDependencyData::Serialize(Serializer& serializer) const
     {
         serializer.WritePropertyName(L"dependencyTypeName");
         serializer.WriteStringValue(m_dependencyTypeName);
+    }
+
+    if (m_parentId.HasValue())
+    {
+        serializer.WritePropertyName(L"ai.operation.parentId");
+        serializer.WriteStringValue(m_parentId.GetValue());
     }
     
     if (m_properties.size() > 0)
