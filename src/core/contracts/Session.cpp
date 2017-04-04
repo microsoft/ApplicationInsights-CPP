@@ -123,22 +123,30 @@ void Session::SetIsNew(const Nullable<std::wstring>& value)
 
 void Session::Serialize(Serializer& serializer) const
 {
-    if (m_id.HasValue())
-    {
-        serializer.WritePropertyName(L"ai.session.id");
-        serializer.WriteStringValue(m_id.GetValue());
-    }
-    
-    if (m_isFirst.HasValue())
-    {
-        serializer.WritePropertyName(L"ai.session.isFirst");
-        serializer.WriteStringValue(m_isFirst.GetValue());
-    }
-    
-    if (m_isNew.HasValue())
-    {
-        serializer.WritePropertyName(L"ai.session.isNew");
-        serializer.WriteStringValue(m_isNew.GetValue());
-    }
+	if (m_id.HasValue())
+	{
+		serializer.WritePropertyName(L"ai.session.id");
+		serializer.WriteStringValue(m_id.GetValue());
+		serializer.WritePropertyName(L"ai.operation.id");
+		serializer.WriteStringValue(m_id.GetValue());
+	}
+	
+	if( m_parentId.HasValue() )
+	{
+		serializer.WritePropertyName(L"ai.operation.parentId");
+		serializer.WriteStringValue(m_parentId.GetValue());
+	}
+
+	if (m_isFirst.HasValue())
+	{
+		serializer.WritePropertyName(L"ai.session.isFirst");
+		serializer.WriteStringValue(m_isFirst.GetValue());
+	}
+	
+	if (m_isNew.HasValue())
+	{
+		serializer.WritePropertyName(L"ai.session.isNew");
+		serializer.WriteStringValue(m_isNew.GetValue());
+	}
 }
 
