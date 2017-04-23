@@ -1,42 +1,41 @@
-##Application Insights SDK C++ - For UAP apps##
+## Application Insights SDK C++ - For UAP apps
 
-###Introduction###
-This document describes how to integrate AppInsights into your projects and the APIs available to you.
+### Introduction
+This document describes how to integrate Application Insights into your projects and the APIs available to you.
 
-###Requirements:###
+### Requirements:
 This SDK will run on Windows C++ - VS 2015 UAP projects
 
-###Download:###
+### Download:
 1. Download the ApplicationInsightsCpp.zip file.
 2. Unzip the folder to a location on your computer (i.e. c:\sdk).  The folder contains static libs for debug and release and the *.h files.
 
-###Setup:###
-1. In your project, in both **release and debug mode**, Add the `<sdk location>`\ApplicationInsights\inc to the project properties -> VC++ Directories -> Include Directories
-2. In both **release and debug**, add AppInsights_Win10-UAP.lib to your project properties -> Link -> input -> additional dependencies
+### Setup:
+1. In your project, in both **release** and **debug** mode, Add the `<sdk location>\ApplicationInsights\inc` to the project properties -> VC++ Directories -> Include Directories
+2. In both **release** and **debug** mode, add AppInsights_Win10-UAP.lib to your project properties -> Link -> input -> additional dependencies
 3. In **release**:
-	- add the `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\\ **release**\AppInsights_Win10-UAP to the project properties -> VC++ Directories -> Library Directories
-	- add `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\\**release**\ApplicationInsights to  project properties -> VC++ Directories -> Library WinRT Directories
+	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\release\AppInsights_Win10-UAP` to the project properties -> VC++ Directories -> Library Directories
+	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\release\ApplicationInsights` to the project properties -> VC++ Directories -> Library WinRT Directories
 4. In **debug**:
-	- add the `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\\ **debug**\AppInsights_Win10-UAP to the project properties -> VC++ Directories -> Library Directories
-	- add `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\\**debug**\ApplicationInsights to  project properties -> VC++ Directories -> Library WinRT Directories
-5. Add ApplicationInsights.winmd as a refernce to your project from `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\ `<BUILD TYPE>`\ApplicationInsights
-6. Add the AppInsights_Win10-UAP.dll from `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\ `<BUILD TYPE>`\AppInsights_Win10-UAP.  Go to properties and set content to YES.  This will copy the dll to your build directory.
-7. In App.xaml.h:
+	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\debug\AppInsights_Win10-UAP` to the project properties -> VC++ Directories -> Library Directories
+	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\debug\ApplicationInsights` to the project properties -> VC++ Directories -> Library WinRT Directories
+5. Add `ApplicationInsights.winmd` as a refernce to your project from `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\<BUILD TYPE>\ApplicationInsights`
+6. Add the `AppInsights_Win10-UAP.dll` from `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\<BUILD TYPE>\AppInsights_Win10-UAP`.  Go to properties and set content to `YES`.  This will copy the DLL to your build directory.
+7. In `App.xaml.h`:
 	- Add ApplicationInsights::CX::SessionTracking^ m_session;
-8.  In your App.xaml.cpp:
-	- add using namespace ApplicationInsights::CX;
-	- In App:App()
+8. In your `App.xaml.cpp`:
+	- Add `using namespace ApplicationInsights::CX;`
+	- In `App:App()`
 		```cpp
 		// this will do automatic session tracking and automatic page view collection
 		m_session = ref new ApplicationInsights::CX::SessionTracking();
 		```
-		
-	- Once you have created the root Frame, (usually at the end of App::OnLaunched) initalize m_session
+	- Once you have created the root frame, (usually at the end of `App::OnLaunched`), initalize `m_session`
 		```cpp
 		String^ iKey = L"<YOUR INSTRUMENTATION KEY>";
 		m_session->Initialize(this, rootFrame, iKey);
 		```
-9. To use tracking elsewhere in your application, you can declare an instance of Telemetry client.
+9. To use tracking elsewhere in your application, you can declare an instance of `Telemetry` client.
 	```cpp
 	using namespace ApplicationInsights::CX;
 	
@@ -46,7 +45,8 @@ This SDK will run on Windows C++ - VS 2015 UAP projects
 	```
 
 
-###APIs###
+### APIs
+
 ```cpp
 /// <summary>
 /// Initializes a new instance of the <see cref="TelemetryClient"/> class.
