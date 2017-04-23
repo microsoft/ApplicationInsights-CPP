@@ -12,17 +12,17 @@ This SDK will run on Windows C++ - VS 2015 UAP projects
 
 ### Setup:
 1. In your project, in both **release** and **debug** mode, Add the `<sdk location>\ApplicationInsights\inc` to the project properties -> VC++ Directories -> Include Directories
-2. In both **release** and **debug** mode, add AppInsights_Win10-UAP.lib to your project properties -> Link -> input -> additional dependencies
+2. In both **release** and **debug** mode, add `AppInsights_Win10-UAP.lib` to your project properties -> Link -> input -> additional dependencies
 3. In **release**:
 	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\release\AppInsights_Win10-UAP` to the project properties -> VC++ Directories -> Library Directories
 	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\release\ApplicationInsights` to the project properties -> VC++ Directories -> Library WinRT Directories
 4. In **debug**:
 	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\debug\AppInsights_Win10-UAP` to the project properties -> VC++ Directories -> Library Directories
 	- Add `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\debug\ApplicationInsights` to the project properties -> VC++ Directories -> Library WinRT Directories
-5. Add `ApplicationInsights.winmd` as a refernce to your project from `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\<BUILD TYPE>\ApplicationInsights`
+5. Add `ApplicationInsights.winmd` as a reference to your project from `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\<BUILD TYPE>\ApplicationInsights`
 6. Add the `AppInsights_Win10-UAP.dll` from `<SDK LOCATION>\ApplicationInsights\lib\<PLATFORM TYPE>\<BUILD TYPE>\AppInsights_Win10-UAP`.  Go to properties and set content to `YES`.  This will copy the DLL to your build directory.
 7. In `App.xaml.h`:
-	- Add ApplicationInsights::CX::SessionTracking^ m_session;
+	- Add `ApplicationInsights::CX::SessionTracking^ m_session;`
 8. In your `App.xaml.cpp`:
 	- Add `using namespace ApplicationInsights::CX;`
 	- In `App:App()`
