@@ -1,16 +1,16 @@
-##Application Insights SDK C++ - For UAP apps##
+## Application Insights SDK C++ - For UAP apps
 
-###Introduction###
+### Introduction
 This document describes how to integrate AppInsights into your projects and the APIs available to you.
 
-###Requirements:###
+### Requirements:
 This SDK will run on Windows C++ - VS 2015 UAP projects
 
-###Download:###
+### Download:
 1. Download the ApplicationInsightsCpp.zip file.
 2. Unzip the folder to a location on your computer (i.e. c:\sdk).  The folder contains static libs for debug and release and the *.h files.
 
-###Setup:###
+### Setup:
 1. In your project, in both **release and debug mode**, Add the `<sdk location>`\ApplicationInsights\inc to the project properties -> VC++ Directories -> Include Directories
 2. In both **release and debug**, add AppInsights_Win10-UAP.lib to your project properties -> Link -> input -> additional dependencies
 3. In **release**:
@@ -45,8 +45,7 @@ This SDK will run on Windows C++ - VS 2015 UAP projects
 	tc->TrackMetric(L"Test Metric", 5.03);
 	```
 
-
-###APIs###
+### APIs
 ```cpp
 /// <summary>
 /// Initializes a new instance of the <see cref="TelemetryClient"/> class.
