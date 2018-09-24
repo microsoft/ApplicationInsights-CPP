@@ -1,4 +1,4 @@
-## Application Insights SDK C++ - For UAP apps
+##  [DEPRECATED] Application Insights SDK C++ - For UAP apps [DEPRECATED]
 
 ### Introduction
 This document describes how to integrate AppInsights into your projects and the APIs available to you.
