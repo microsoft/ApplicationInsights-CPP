@@ -11,7 +11,7 @@ This SDK will run on Windows C++ - VS 2015 UAP projects
 2. Unzip the folder to a location on your computer (i.e. c:\sdk).  The folder contains static libs for debug and release and the *.h files.
 
 ### Setup:
-1. In your project, in both **release and debug mode**, Add the `<sdk location>`\ApplicationInsights\inc to the project properties -> VC++ Directories -> Include Directories
+1. In your project, in both **release and debug mode**, add the `<sdk location>`\ApplicationInsights\inc to the project properties -> VC++ Directories -> Include Directories
 2. In both **release and debug**, add AppInsights_Win10-UAP.lib to your project properties -> Link -> input -> additional dependencies
 3. In **release**:
 	- add the `<sdk location>`\ApplicationInsights\lib\ `<PLATFORM TYPE>`\\ **release**\AppInsights_Win10-UAP to the project properties -> VC++ Directories -> Library Directories
