@@ -21,6 +21,7 @@ namespace ApplicationInsights
 		{
 		private:
 			int m_ver;
+			Nullable<std::wstring> m_id;
 			std::wstring m_name;
 			DataPointType m_kind;
 			double m_value;
@@ -34,6 +35,7 @@ namespace ApplicationInsights
 			DependencySourceType m_dependencySource;
 			std::wstring m_commandName;
 			std::wstring m_dependencyTypeName;
+			Nullable<std::wstring> m_parentId;
 			std::map<std::wstring, std::wstring> m_properties;
 
 		public:
@@ -43,6 +45,9 @@ namespace ApplicationInsights
 
 			const int& GetVer() const { return m_ver; }
 			void SetVer(const int& value) { m_ver = value; }
+
+			const Nullable<std::wstring>& GetId() const { return m_id; }
+			void SetId(const Nullable<std::wstring>& value) { m_id = value; }
 
 			const std::wstring& GetName() const { return m_name; }
 			void SetName(const std::wstring& value) { m_name = value; }
@@ -82,6 +87,9 @@ namespace ApplicationInsights
 
 			const std::wstring& GetDependencyTypeName() const { return m_dependencyTypeName; }
 			void SetDependencyTypeName(const std::wstring& value) { m_dependencyTypeName = value; }
+
+			const Nullable<std::wstring>& GetParentId() const { return m_parentId; }
+			void SetParentId(const Nullable<std::wstring>& value) { m_parentId = value; }
 
 			const std::map<std::wstring, std::wstring>& GetProperties() const { return m_properties; }
 			void SetProperties(const std::map<std::wstring, std::wstring>& value) { m_properties = value; }

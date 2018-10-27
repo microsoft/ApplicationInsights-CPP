@@ -19,6 +19,7 @@ namespace ApplicationInsights
 			Nullable<std::wstring> m_id;
 			Nullable<std::wstring> m_isFirst;
 			Nullable<std::wstring> m_isNew;
+			Nullable<std::wstring> m_parentId;
 
 		public:
 			Session();
@@ -32,6 +33,9 @@ namespace ApplicationInsights
 
 			const Nullable<std::wstring>& GetIsNew();
 			void SetIsNew(const Nullable<std::wstring>& value);
+
+			const Nullable<std::wstring>& GetParentId() const { return m_parentId; }
+			void SetParentId(const Nullable<std::wstring>& value) { m_parentId = value; }
 
 			virtual void Serialize(Serializer& serializer) const;
 		};

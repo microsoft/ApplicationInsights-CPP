@@ -83,3 +83,6 @@ ssl/
 .deps/
 *.opendb
 *.db
+/Projects/AppInsights_Win32/package/package.ps1
+.vs/
+.vs/application_insights/v14/.suo
